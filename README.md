@@ -4,7 +4,7 @@ Image aimed to be used in Github actions for building [Ren'Py](https://www.renpy
 
 ## Example action
 
-```yaml'
+```yaml
 name: Build published release
 on:
   release:
