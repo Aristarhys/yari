@@ -2,6 +2,13 @@
 
 Image aimed to be used in Github actions for building [Ren'Py](https://www.renpy.org/) projects.
 
+## Developing
+
+```bash
+docker build -t aristarhys/yari:latest -t aristarhys/yari:8.2.1 --squash=true .
+docker push --all-tags aristarhys/yari
+```
+
 ## Example action
 
 ```yaml
@@ -16,7 +23,7 @@ jobs:
       image: aristarhys/yari:latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
         with:
           lfs: true
 
@@ -34,7 +41,7 @@ jobs:
           echo "::set-output name=FILE_PATH::$FILE_PATH"
 
       - name: Upload release to action
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.set_release_path.outputs.FILE_NAME }}
           path: ${{ steps.set_release_path.outputs.FILE_PATH }}
